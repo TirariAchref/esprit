@@ -1,30 +1,34 @@
+import 'package:esprit/product_info.dart';
 import 'package:flutter/material.dart';
-import 'product_info.dart';
 
-void main() => runApp(MyApp());
+import 'signup.dart';
+import 'product_details.dart';
+import 'home.dart';
 
-class MyApp extends StatelessWidget{
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return MaterialApp(
-      title: "store",
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("G-Store ESPRIT"),
-        ),
-        body: Column(
-          children: const [
-            ProductInfo("assets/images/dmc5.jpg", "Devil May Cry 5", 200),
-            ProductInfo("assets/images/re8.jpg", "Resident Evil VIII", 200),
-            ProductInfo("assets/images/nfs.jpg", "Need For Speed Heat", 100),
-            ProductInfo("assets/images/rdr2.jpg", "Read Dead Redemption 2", 150),
-            ProductInfo("assets/images/fifa.jpg", "Fifa 2020", 100),
-            //ProductInfo("assets/images/minecraft.jpg", "minecraft", 200),
-          ],
-        ),
-      ),
+    return const MaterialApp(
+      title: 'G-Store ESPRIT',
+      // home: Signup(),
+      home: Signup(),
+      // ProductDetails("assets/images/dmc5.jpg", "Devil May Cry 5","fnmln", 200),
+      // home: ProductDetails("assets/images/dmc5.jpg", "Devil May Cry 5",
+      //     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, "
+      //         "sed do eiusmod tempor incididunt ut "
+      //         "labore et dolore magna aliqua. Ut enim ad minim veniam, "
+      //         "quis nostrud exercitation ullamco laboris nisi ut "
+      //         "aliquip ex ea commodo consequat. Duis aute irure dolor "
+      //         "in reprehenderit in voluptate velit esse cillum dolore "
+      //         "eu fugiat nulla pariatur. Excepteur sint occaecat "
+      //         "cupidatat non proident, sunt in culpa qui officia "
+      //         "deserunt mollit anim id est laborum.", 200)
     );
   }
-
 }
