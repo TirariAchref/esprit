@@ -1,32 +1,54 @@
 import 'package:flutter/material.dart';
 
-class ProductDetails extends StatelessWidget {
+class ProductDetails extends StatefulWidget {
   final String _image;
   final String _title;
   final String _description;
   final int _price;
+  final int quantity;
 
   const ProductDetails(
-      this._image, this._title, this._description, this._price, {Key? key}) : super(key: key);
+      this._image, this._title, this._description, this._price,this.quantity, {Key? key}) : super(key: key);
 
+  @override
+  State<ProductDetails> createState() => _ProductDetailsState(this.quantity);
+}
+
+class _ProductDetailsState extends State<ProductDetails> {
+  int quantity;
+
+  _ProductDetailsState(this.quantity);
+
+ void buy(){
+   setState(() {
+     quantity --;
+   });
+ }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_title),
+        title: Text(widget._title),
       ),
       body: Column(
         children: [
           Container(
             width: double.infinity,
             margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-            child: Image.asset(_image, width: 460, height: 215)
+            child: Image.asset(widget._image, width: 460, height: 215)
           ),
           Container(
             margin: const EdgeInsets.fromLTRB(20, 0, 20, 50),
-            child: Text(_description),
+            child: Text(widget._description),
           ),
-          Text(_price.toString() + " TND", textScaleFactor: 3),
+          
+          Text(widget._price.toString() + " TND", textScaleFactor: 3),
+           Text("We have "+quantity.toString()+ " Quantity left in stock ", textScaleFactor: 1),
           const SizedBox(
             height: 50,
           ),
@@ -42,9 +64,10 @@ class ProductDetails extends StatelessWidget {
                     width: 10,
                   ),
                   Text("Acheter", textScaleFactor: 2)
+                
                 ],
               ),
-              onPressed: () {},
+              onPressed: buy,
             ),
           )
         ],

@@ -1,6 +1,8 @@
+import 'package:esprit/authentifier.dart';
 import 'package:esprit/product_info.dart';
 import 'package:flutter/material.dart';
 
+import 'bibliotheque.dart';
 import 'signup.dart';
 import 'product_details.dart';
 import 'home.dart';
@@ -17,9 +19,10 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
        debugShowCheckedModeBanner: false,
       title: 'G-Store ESPRIT',
-      // home: Signup(),
-      home: Home(),
-     
+     //  home:ProductDetails("assets/images/rdr2.jpg","Red Dead Redemption II", "fezf",200,10),
+      //home: Home(),
+    // home: Bibliotheque(),
+    home: Authentifier(),
     );
   }
 }
