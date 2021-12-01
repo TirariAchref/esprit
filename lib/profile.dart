@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 
-class Signup extends StatefulWidget {
-  const Signup({Key? key}) : super(key: key);
+class Profile extends StatefulWidget {
+  const Profile({ Key? key }) : super(key: key);
 
   @override
-  State<Signup> createState() => _SignupState();
+  State<Profile> createState() => _ProfileState();
 }
 
-class _SignupState extends State<Signup> {
-  late String? username;
+class _ProfileState extends State<Profile> {
+
   late String? password;
-  late String? email;
+  
  
   late String? naissance;
   late String? address;
-
-final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Inscription"),
+        title: const Text("Parametre de profile"),
       ),
       body: Form(
          key: _formKey,
@@ -31,45 +30,8 @@ final _formKey = GlobalKey<FormState>();
                 margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
                 child: Image.asset("assets/images/minecraft.jpg", width: 460, height: 215)
             ),
-            Container(
-              margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-              child:  TextFormField(
-                onSaved: (text){
-                  username = text;
-                },
-                validator: ( String? value){
-                 if(value!.isEmpty){
-                   return 'Please put your Username';
-      
-                 }
-                   return null;
-                },
-                  keyboardType: TextInputType.text,
-                decoration:const InputDecoration(
-                    border: OutlineInputBorder(),
-                     labelText: "Username"),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-              child:  TextFormField(
-                  onSaved: (text){
-                  email = text;
-                },
-                  validator: ( String? value){
-                    RegExp emailValid = RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-                 if(value!.isEmpty|| !emailValid.hasMatch(value)){
-                   return 'Please put your Email';
-      
-                 }
-                   return null;
-                },
-                  keyboardType: TextInputType.emailAddress,
-                decoration:const InputDecoration(
-                    border: OutlineInputBorder(), 
-                    labelText: "Email"),
-              ),
-            ),
+     
+       
             Container(
               margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
               child:  TextFormField(
@@ -86,7 +48,7 @@ final _formKey = GlobalKey<FormState>();
                   obscureText: true,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), 
-                    labelText: "Mot de passe"),
+                    labelText: "Mot de passe actuel"),
               ),
             ),
             Container(
@@ -96,16 +58,16 @@ final _formKey = GlobalKey<FormState>();
                   naissance = text;
                 },
                   validator: ( String? value){
-                 if(value!.isEmpty || int.parse(value)>2021){
-                   return 'Please put your annee';
+                 if(value!.isEmpty ){
+                   return 'Please put your password';
       
                  }
                    return null;
                 },
-                keyboardType: TextInputType.number,
+              obscureText: true,
                 decoration: const InputDecoration(
                     border: OutlineInputBorder(), 
-                    labelText: "Année de naissance",
+                    labelText: "Nouveau Mot de passe",
                     
                     ),
               ),
@@ -129,11 +91,8 @@ final _formKey = GlobalKey<FormState>();
                     labelText: "Adresse de facturation"),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  child: const Text("S'inscrire"),
+                 ElevatedButton(
+                  child: const Text("Enregistrer"),
                  onPressed: () {
                          // Validate returns true if the form is valid, or false otherwise.
                          if (_formKey.currentState!.validate()) {
@@ -142,9 +101,9 @@ final _formKey = GlobalKey<FormState>();
                           builder: (_){
                             return AlertDialog(
                               title:const Text("Information") ,
-                              content: Text("username : " + username! + "\n email : " +email! +
+                              content: Text(
                               "\n password : " + password!+
-                              "\n naissance : " + naissance! +
+                              "\n nouveau password : " + naissance! +
                               "\n address : " + address!),
 
                             );
@@ -152,17 +111,6 @@ final _formKey = GlobalKey<FormState>();
     }
   },
                 ),
-                const SizedBox(
-                  width: 20,
-                ),
-                ElevatedButton(
-                  child: const Text("Annuler"),
-                  onPressed: () {
-                 
-                  },
-                )
-              ],
-            )
           ],
         ),
       ),
