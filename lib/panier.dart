@@ -18,10 +18,13 @@ class Panier extends StatelessWidget {
           child: const Text("Total : 500DT "),
           alignment: Alignment.topRight,
         ),
-        const PanierWidget(image: "assets/images/dmc5.jpg", price: "200DT"),
+        
+           const PanierWidget(image: "assets/images/dmc5.jpg", price: "200DT"),
           const PanierWidget(image: "assets/images/re8.jpg", price: "200DT"),
             const PanierWidget(image: "assets/images/nfs.jpg", price: "200DT")
         
+         
+     
       ],),
       
       

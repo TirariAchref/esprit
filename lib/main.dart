@@ -36,8 +36,8 @@ class MyApp extends StatelessWidget {
      //home: Bibliotheque(),
   // home: Authentifier(),
    //home: Signup(),
-  home: changeMDP(),
-
+  //home: changeMDP(),
+home: Panier(),
     );
   }
 }

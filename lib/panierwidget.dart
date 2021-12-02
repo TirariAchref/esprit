@@ -11,15 +11,20 @@ final String price;
 class _PanierWidgetState extends State<PanierWidget> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-     children: [
-        Container(
-                width: double.infinity,
-                margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+    return Card(
+      child: Row(
+children: [
+  Container(
+               
+                margin: const EdgeInsets.fromLTRB(10, 10, 20, 0),
                 child: Image.asset(widget.image, width: 100, height: 110)
             ),
             Text(widget.price)
-     ],
-    );
+],
+      ),
+    )
+        
+          
+     ;
   }
 }
